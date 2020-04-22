@@ -5,7 +5,7 @@ int main(void){
     setvbuf(stderr, NULL, _IONBF, 0);
     float firstnum, secondnum, var1, var2;
     float *vec1, *vec2, res;
-    char sign = '+', signV, choose, inputfile[100], outputfile[100], sv, chooseSV;
+    char sign = '+', signV, choose, inputfile[100], outputfile[100], sv;
     int repeat = 1;
     int size, select;
     FILE *input, *output;
@@ -23,29 +23,29 @@ int main(void){
             while(feof(input) == 0){//while in file
                 fscanf(input, " %c", &sign);
                 fscanf(input, " %c", &sv);
-                switch(chooseSV){
+                switch(sv){
                 case 's':
                     switch(sign){
                     case '+':
                         fscanf(input, " %f", &firstnum);
                         fscanf(input, " %f", &secondnum);
-                        fprintf(output, "%f + %f = %f", firstnum, secondnum, firstnum + secondnum);
+                        fprintf(output, "%.0f + %.0f = %.0f", firstnum, secondnum, firstnum + secondnum);
                         break;
                     case '-':
                         fscanf(input, " %f", &firstnum);
                         fscanf(input, " %f", &secondnum);
-                        fprintf(output, "%f - %f = %f", firstnum, secondnum, firstnum - secondnum);
+                        fprintf(output, "%.0f - %.0f = %.0f", firstnum, secondnum, firstnum - secondnum);
                         break;
                     case '*':
                         fscanf(input, " %f", &firstnum);
                         fscanf(input, " %f", &secondnum);
-                        fprintf(output, "%f * %f = %f", firstnum, secondnum, firstnum * secondnum);
+                        fprintf(output, "%.0f * %.0f = %.0f", firstnum, secondnum, firstnum * secondnum);
                         break;
                     case '/':
                         fscanf(input, " %f", &firstnum);
                         fscanf(input, " %f", &secondnum);
                         if (secondnum != 0){
-                        fprintf(output, "%f / %f = %f", firstnum, secondnum, firstnum / secondnum);}
+                        fprintf(output, "%.0f / %.0f = %.0f", firstnum, secondnum, firstnum / secondnum);}
                         else{
                             fprintf(output, "Mistake! You can`t divide by 0.\n");
                         }
@@ -58,7 +58,7 @@ int main(void){
                         for(int var1=1; var1<=secondnum; var1++){
                             var1=var2;
                             var2=var1*firstnum;}
-                        fprintf(output, "%f ^ %f = %f", firstnum, secondnum, var2);
+                        fprintf(output, "%.0f ^ %.0f = %.0f", firstnum, secondnum, var2);
                         break;
                     case '!':
                         fscanf(input, " %f", &firstnum);
@@ -67,7 +67,7 @@ int main(void){
                         for(int i=1; i<=firstnum; i++){
                             var2=var2*i;
                             var1=var2;}
-                        fprintf(output, "%f! = %f", firstnum, var2);
+                        fprintf(output, "%.0f! = %.0f", firstnum, var2);
                         break;
                     default:
                         fprintf(output, "Something wrong, try again.");
@@ -86,13 +86,13 @@ int main(void){
                             fscanf(input, " %f",&vec2[i]);
                         fprintf(output, "( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec1[i]);
+                            fprintf(output, "%.0f ", vec1[i]);
                         fprintf(output, ") + ( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec2[i]);
+                            fprintf(output, "%.0f ", vec2[i]);
                         fprintf(output, ") = ( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ",vec1[i]+vec2[i]);
+                            fprintf(output, "%.0f ",vec1[i]+vec2[i]);
                         fprintf(output, ")");
                         break;
                     case '-':
@@ -103,13 +103,13 @@ int main(void){
                             fscanf(input, " %f",&vec2[i]);
                         fprintf(output, "( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec1[i]);
+                            fprintf(output, "%.0f ", vec1[i]);
                         fprintf(output, ") - ( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec2[i]);
+                            fprintf(output, "%.0f ", vec2[i]);
                         fprintf(output, ") = ( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ",vec1[i]-vec2[i]);
+                            fprintf(output, "%.0f ",vec1[i]-vec2[i]);
                         fprintf(output, ")");
                         break;
                     case '*':
@@ -120,14 +120,14 @@ int main(void){
                             fscanf(input, " %f",&vec2[i]);
                         fprintf(output, "( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec1[i]);
+                            fprintf(output, "%.2f ", vec1[i]);
                         fprintf(output, ") * ( ");
                         for(int i=0;i<size;i++)
-                            fprintf(output, "%f ", vec2[i]);
+                            fprintf(output, "%.0f ", vec2[i]);
                         fprintf(output, ") = ( ");
                         for(int i=0;i<size;i++){
                             res += vec1[i] * vec2[i];
-                            fprintf(output, "%f ", res);}
+                            fprintf(output, "%.0f ", res);}
                         fprintf(output, ")");
                         break;
                     }// switch sign in 'v' end
